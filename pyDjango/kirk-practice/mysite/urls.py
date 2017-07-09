@@ -1,3 +1,5 @@
+#-*- coding: utf-8 -*-
+
 """mysite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -13,17 +15,20 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import include, url                        # added include
 from django.contrib import admin
 
 # Listview, DetailView
 #from bookmark.views import BookmarkLV, BookmarkDV
-from bookmark.views import BookmarkLV, BookmarkDV
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    # bookmark앱의 APP_URLCONF를 포함하고 namespace를 bookmark로 지정
+    url(r'^bookmark/', include('bookmark.urls', namespace='bookmark')),           # added
+    url(r'^blog/', include('blog.urls', namespace='blog')),                       # added
 
     # Class-based views for Bookmark app
-    url(r'^bookmark/$', BookmarkLV.as_view(), name='index'),
-    url(r'^bookmark/(?P<pk>\d+)/$', BookmarkDV.as_view(), name='detail'),
+    #url(r'^bookmark/$', BookmarkLV.as_view(), name='index'),
+    #url(r'^bookmark/(?P<pk>\d+)/$', BookmarkDV.as_view(), name='detail'),
 ]
