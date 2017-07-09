@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # added by kirk
-    'bookmark.apps.BookmarkConfig'                      # Added
-    #'blog.apps.BlogConfig'                              # Added
+    'bookmark.apps.BookmarkConfig',                     # Added
+    'blog.apps.BlogConfig',                             # Added 쉼표 조심
 ]
 
 MIDDLEWARE = [
